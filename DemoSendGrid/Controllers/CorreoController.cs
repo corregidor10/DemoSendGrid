@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Mail;
+using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
 
@@ -13,16 +15,48 @@ namespace DemoSendGrid.Controllers
             return View();
         }
 
-        [HttpPost]
-        [ValidateInput(false)]
-        public ActionResult EnviarCorreo(String Destino, String Asunto, String Mensaje)
+        public ActionResult EnviarCorreo()
         {
-            
-            new EnviarCorreos().PostMails(Destino, Asunto, Mensaje);
-
-            return View("Index");
+            return View();
         }
-        
-       
+
+        [HttpPost]
+        public ActionResult EnviarCorreo(String CorreoUsuario, String Destino, String Asunto, String Mensaje, String Dni, String Nombre)
+        {
+            try
+            {
+                Asunto = Nombre + " con " + Dni + " quiere saber.....";
+
+                new EnviarCorreos().PostMails(Nombre, CorreoUsuario, Destino, Asunto, Mensaje);
+                //CC} finally {
+
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+
+            try
+            {
+                Asunto = "Copia de tu solicitud con fecha" + DateTime.Now.Hour + ":" + DateTime.Now.Minute + ". No respondas a este mensaje";
+                Destino = CorreoUsuario;
+                CorreoUsuario = "info@chinoexpress.com";
+                Nombre = "ChinoExpress";
+
+
+             new EnviarCorreos().PostMails(Nombre, CorreoUsuario, Destino, Asunto, Mensaje);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+
+
+
+            return RedirectToAction("Index");
+        }
+
+
+
     }
 }

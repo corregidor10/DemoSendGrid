@@ -9,7 +9,7 @@ namespace DemoSendGrid
 {
     public class EnviarCorreos
     {
-        public void PostMails(String mailsender, String asunto, String body)
+        public void PostMails(String Name,String mailFrom,String mailsender, String asunto, String body)
         {
             try
             {
@@ -19,7 +19,7 @@ namespace DemoSendGrid
                 mailMsg.To.Add(new MailAddress(mailsender));
 
                 // From
-                mailMsg.From = new MailAddress("info@encuestator.com", "Soy yo, Tonto");
+                mailMsg.From = new MailAddress(mailFrom, Name);
 
                 // Subject and multipart/alternative Body
                 mailMsg.Subject = asunto;
