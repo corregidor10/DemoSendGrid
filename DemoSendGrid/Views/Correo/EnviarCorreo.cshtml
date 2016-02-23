@@ -4,7 +4,7 @@
 
 }
 
-    
+    @* TODO 004. En la Vista, capturamos los datos que necesita el controlador*@
         @using (Html.BeginForm("EnviarCorreo", "Correo", FormMethod.Post))
         {
             <br/>
@@ -16,11 +16,11 @@
                     <div >
                         @Html.DropDownList("Destino", new SelectList(new List<Object>
                     {
-                    new {value="b602307@trbvn.com", text="Ventas"},
+                    new {value="b612825@trbvn.com", text="Ventas"},
                     new {value="b602391@trbvn.com", text="Facturacion"},
                      new {value="b632391@trbvn.com", text="PostVenta"},
                       new {value="b655685@trbvn.com", text="Logistica"},
-                       new {value="b667658@trbvn.com", text="Calidad"},
+                       new {value="b6555585@trbvn.com", text="Calidad"},
 
                     }, "value", "text"), new { @class = "form-control" })
 

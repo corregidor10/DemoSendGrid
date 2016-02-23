@@ -9,6 +9,7 @@ namespace DemoSendGrid
 {
     public class EnviarCorreos
     {
+        // TODO 002. Creamos un metodo que nos genera el envío de de correos
         public void PostMails(String Name,String mailFrom,String mailsender, String asunto, String body)
         {
             try

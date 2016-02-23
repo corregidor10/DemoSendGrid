@@ -19,7 +19,7 @@ namespace DemoSendGrid.Controllers
         {
             return View();
         }
-
+        // TODO 003. Creamos la accion en el controlador para enviar correos.
         [HttpPost]
         public ActionResult EnviarCorreo(String CorreoUsuario, String Destino, String Asunto, String Mensaje, String Dni, String Nombre)
         {
@@ -38,7 +38,7 @@ namespace DemoSendGrid.Controllers
 
             try
             {
-                Asunto = "Copia de tu solicitud con fecha" + DateTime.Now.Hour + ":" + DateTime.Now.Minute + ". No respondas a este mensaje";
+                Asunto = "Copia de tu solicitud con fecha" + DateTime.Now.Hour + ":" + DateTime.Now.Minute + " No respondas a este mensaje";
                 Destino = CorreoUsuario;
                 CorreoUsuario = "info@chinoexpress.com";
                 Nombre = "ChinoExpress";
