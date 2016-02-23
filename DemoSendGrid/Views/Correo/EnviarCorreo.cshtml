@@ -1,0 +1,83 @@
+﻿@using System.ComponentModel
+@{
+
+
+}
+
+    
+        @using (Html.BeginForm("EnviarCorreo", "Correo", FormMethod.Post))
+        {
+            <br/>
+            <div class="form-horizontal col-md-7">
+
+                <div class="form-group">
+                    @Html.Label("Departamento", htmlAttributes: new { @class = "badge", style = "background-color: darkorchid" })
+                 
+                    <div >
+                        @Html.DropDownList("Destino", new SelectList(new List<Object>
+                    {
+                    new {value="corregidor10@hotmail.com", text="Ventas"},
+                    new {value="corregidor10@gmail.com", text="Facturacion"},
+                     new {value="daniel.corregidor@tajamar365.com", text="PostVenta"},
+                      new {value="daniel.corregidor@tajamar365.com", text="Logistica"},
+                       new {value="corregidor10@hotmail.com", text="Calidad"},
+
+                    }, "value", "text"), new { @class = "form-control" })
+
+                    </div>
+                </div>
+
+                <div class="form-group">
+
+                    <label for="Dni" class="badge" style="background-color: darkorchid">DNI</label>
+
+                    <div>
+
+                        <input id="Dni" name="Dni" type="text" class="form-control" placeholder="Ej. 09047565X"/>
+
+
+                    </div>
+                </div>
+
+                <div class="form-group">
+
+                    <label for="Nombre" class="badge" style="background-color: darkorchid">Nombre Cliente: </label>
+
+                    <div>
+
+                        <input id="Nombre" name="Nombre" type="text" class="form-control" placeholder="Ej. Maria Ortega"/>
+
+
+                    </div>
+                </div>
+
+                <div class="form-group">
+
+                    <label for="CorreoUsuario" class="badge" style="background-color: darkorchid">Email: </label>
+
+                    <div>
+
+                        <input id="CorreoUsuario" name="CorreoUsuario" type="text" class="form-control" placeholder="Ej. hola@adios.es" />
+
+
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.Label("Mensaje", new { @class = "badge", style="background-color: darkorchid"})
+                    <div>
+                        @Html.TextArea("Mensaje", null, new { maxlength = 500, rows = "10",  @class = "form-control", placeholder="Explica detalladamente el motivo de tu consulta, recibirás una copia en tu correo electrónico" })
+                    </div>
+                </div>
+                <br />
+                <div class="form-group">
+                    <div class=btn-toolbar>
+                        <input type="submit" value="Enviar Correo" class="btn btn-info" />
+                        <button type="button" class="btn btn-default">
+                            @Html.ActionLink("Menu", "Index")
+                        </button>
+                    </div>
+                </div>
+            </div>
+        }
+
